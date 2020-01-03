@@ -1,22 +1,20 @@
 <script>
 	import { Col, Container, Row, Button } from "sveltestrap";
 	import NavBar from './components/nav/NavBar.svelte';
-	import Title from "./components/title/Title.svelte";
-	const colors = [
-    "primary", "secondary", "success", "danger", "warning", "info", "light", "dark"
-  ];
-	export let name;
+	import ExpensesList from './components/expenses-list/ExpensesList.svelte';
+	import ExpenseData from "./expenses";
+
+	let expenseData = [...ExpenseData];
 </script>
 
-<div>
-	<NavBar />
-	<Container>
-	<Title />
-	<Button color="success">
-		Button
-	</Button>
-	</Container>
-</div>
-<style>
-
-</style>
+<NavBar />
+<Container>
+	<Row>
+		<Col>
+			<ExpensesList expenses={expenseData} />
+			<!-- <Button color="success">
+				Button
+			</Button> -->
+		</Col>
+	</Row>
+</Container>
