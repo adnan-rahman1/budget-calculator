@@ -15,13 +15,28 @@
 
 <hr>
 <p>
-  <span>{ index }.</span>
+  <!-- <span>{ index }.</span> -->
   <span>Title: { expense.name }</span>
-  <Button color="primary" size="sm" on:click={toggleBudgetAmountVisibility}>
-  <i class={"fa fa-caret-" + subClassName} aria-hidden="true"></i>
-  </Button><br>
+  <span class="all-btn">
+  <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
+  <i class="text-secondary fa fa-pencil" aria-hidden="true"></i>
+  </Button>
+
+  <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
+  <i class="text-danger fa fa-trash" aria-hidden="true"></i>
+  </Button>
+
+  <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
+  <i class={"text-info fa fa-caret-" + subClassName} aria-hidden="true"></i>
+  </Button></span><br>
 
   {#if isBudgetAmountVisible}
     <span>Amount: { expense.amount }</span>
   {/if}
 </p>
+
+<style>
+  .all-btn {
+    float: right;
+  }
+</style>
