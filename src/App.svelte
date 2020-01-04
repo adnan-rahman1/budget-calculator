@@ -4,14 +4,14 @@
 	import ExpensesList from './components/expenses-list/ExpensesList.svelte';
 	import ExpenseData from "./expenses";
 
-	let expenseData = [...ExpenseData];
+	let expenses = [...ExpenseData];
 </script>
 
 <NavBar />
 <Container>
 	<Row>
 		<Col>
-			<ExpensesList expenses={expenseData} />
+			<ExpensesList {expenses} />
 			<!-- <Button color="success">
 				Button
 			</Button> -->
