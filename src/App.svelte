@@ -5,13 +5,17 @@
 	import ExpenseData from "./expenses";
 
 	let expenses = [...ExpenseData];
+
+	let removeExpense = id => {
+		expenses = expenses.filter(expense => expense.id !== id);
+	}
 </script>
 
 <NavBar />
 <Container>
 	<Row>
 		<Col>
-			<ExpensesList {expenses} />
+			<ExpensesList {expenses} {removeExpense} />
 			<!-- <Button color="success">
 				Button
 			</Button> -->

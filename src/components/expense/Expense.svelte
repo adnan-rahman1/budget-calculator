@@ -2,6 +2,8 @@
   import { Button } from "sveltestrap";
   export let index = 0;
   export let expense = {};
+  export let removeExpense;
+
   let isBudgetAmountVisible = false;
   let subClassName = "down";
 
@@ -18,16 +20,16 @@
   <!-- <span>{ index }.</span> -->
   <span>Title: { expense.name }</span>
   <span class="all-btn">
-  <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
-  <i class="text-secondary fa fa-pencil" aria-hidden="true"></i>
+  <Button color="light" size="sm">
+    <i class="text-secondary fa fa-pencil" aria-hidden="true"></i>
+  </Button>
+
+  <Button color="light" size="sm" on:click={() => removeExpense(expense.id)}>
+    <i class="text-danger fa fa-trash" aria-hidden="true"></i>
   </Button>
 
   <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
-  <i class="text-danger fa fa-trash" aria-hidden="true"></i>
-  </Button>
-
-  <Button color="light" size="sm" on:click={toggleBudgetAmountVisibility}>
-  <i class={"text-info fa fa-caret-" + subClassName} aria-hidden="true"></i>
+    <i class={"text-info fa fa-caret-" + subClassName} aria-hidden="true"></i>
   </Button></span><br>
 
   {#if isBudgetAmountVisible}
