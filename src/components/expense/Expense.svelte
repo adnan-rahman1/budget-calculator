@@ -33,7 +33,7 @@
   </Button></span><br>
 
   {#if isBudgetAmountVisible}
-    <span>Amount: { expense.amount }</span>
+    <span>Amount : ${ expense.amount }</span>
   {/if}
 </p>
 
