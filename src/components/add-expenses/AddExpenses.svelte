@@ -12,8 +12,13 @@
     Input,
     Label
   } from "sveltestrap";
+
   let open = false;
   const toggle = () => (open = !open);
+
+  let expense = "";
+  let amount = 0;
+
 </script>
 
 <style>
@@ -28,25 +33,27 @@
     <ModalHeader {toggle}>
       <Title title="Add Expense" />
     </ModalHeader>
-    <ModalBody>
-      <Form>
-        <FormGroup>
-          <Input
-          type="text"
-          name="expense-name"
-          placeholder="Name" />
-        </FormGroup>
-        <FormGroup>
-          <Input
+    <Form>
+      <ModalBody>
+          <FormGroup>
+            <Input
             type="text"
-            name="amount"
-            placeholder="Amount" />
-        </FormGroup>
-      </Form>
-    </ModalBody>
-    <ModalFooter>
-      <Button color="primary" on:click={toggle}>Add</Button>
-      <Button color="secondary" on:click={toggle}>Cancel</Button>
-    </ModalFooter>
+            name="expense"
+            bind:value={expense}
+            placeholder="Name" />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type="number"
+              name="amount"
+              bind:value={amount}
+              placeholder="Amount" />
+          </FormGroup>
+      </ModalBody>
+      <ModalFooter>
+        <Button type="submit" color="primary" on:click={toggle}>Add</Button>
+        <Button color="secondary" on:click={toggle}>Cancel</Button>
+      </ModalFooter>
+    </Form>
   </Modal>
 </div>
