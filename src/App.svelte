@@ -4,6 +4,7 @@
 	import ExpensesList from './components/expenses-list/ExpensesList.svelte';
 	import ExpenseData from "./expenses";
 	import TotalExpenses from "./components/total-expenses/TotalExpenses.svelte";
+	import AddExpenses from "./components/add-expenses/AddExpenses.svelte";
 
 	let expenses = [...ExpenseData];
 
@@ -15,10 +16,13 @@
 </script>
 
 <NavBar />
-<Container>
+<Container><br>
+	<Row>
+		<Col><TotalExpenses {totalExpenses} /></Col>
+		<Col><AddExpenses /></Col>
+	</Row>
 	<Row>
 		<Col>
-			<TotalExpenses {totalExpenses} />
 			<ExpensesList {expenses} {removeExpense} />
 			<!-- <Button color="success">
 				Button

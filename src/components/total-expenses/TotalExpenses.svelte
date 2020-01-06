@@ -2,7 +2,6 @@
   export let totalExpenses = 0;
 </script>
 
-<br>
 <h4>Total Expenses : { totalExpenses }</h4>
 
 
