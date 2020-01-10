@@ -10,6 +10,11 @@
 
 	$: totalExpenses = expenses.reduce((acc, cur) => ( acc + cur.amount), 0)
 
+
+	let addExpense = (data) => {
+		expenses = [data, ...expenses];
+	}
+
 	let removeExpense = id => {
 		expenses = expenses.filter(expense => expense.id !== id);
 	}
@@ -19,7 +24,7 @@
 <Container><br>
 	<Row>
 		<Col><TotalExpenses {totalExpenses} /></Col>
-		<Col><AddExpenses /></Col>
+		<Col><AddExpenses {addExpense}/></Col>
 	</Row>
 	<Row>
 		<Col>

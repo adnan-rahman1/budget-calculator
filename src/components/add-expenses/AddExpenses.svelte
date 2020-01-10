@@ -19,6 +19,21 @@
   let expense = "";
   let amount = 0;
 
+  $: isEmpty = !expense || !amount;
+
+  export let addExpense;
+
+  const handleFormSubmit = () => {
+    const newExpense = {
+      id: Math.random() * Date.now(),
+      name: expense,
+      amount
+    };
+    addExpense(newExpense)
+    expense = "";
+    amount = 0;
+  }
+
 </script>
 
 <style>
@@ -33,10 +48,11 @@
     <ModalHeader {toggle}>
       <Title title="Add Expense" />
     </ModalHeader>
-    <Form>
+    <form on:submit|preventDefault={handleFormSubmit}>
       <ModalBody>
           <FormGroup>
             <Input
+            id="name"
             type="text"
             name="expense"
             bind:value={expense}
@@ -44,16 +60,20 @@
           </FormGroup>
           <FormGroup>
             <Input
+              id="amount"
               type="number"
               name="amount"
               bind:value={amount}
               placeholder="Amount" />
           </FormGroup>
+          {#if (isEmpty)}
+            <p class="text-center text-danger">Please fill out all the input.</p>
+          {/if}
       </ModalBody>
       <ModalFooter>
-        <Button type="submit" color="primary" on:click={toggle}>Add</Button>
-        <Button color="secondary" on:click={toggle}>Cancel</Button>
+        <Button id="submit" disabled={isEmpty} type="submit" color="primary">Add</Button>
+        <Button type="button" id="cancel" color="secondary" on:click={toggle}>Cancel</Button>
       </ModalFooter>
-    </Form>
+    </form>
   </Modal>
 </div>
